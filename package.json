@@ -1,0 +1,18 @@
+{
+  "name": "cordova-plugin-last-bixolon",
+  "version": "1.0.1",
+  "description": "Cordova Bixolon last version plugin",
+  "license": "MIT",
+  "cordova": {
+    "id": "cordova-plugin-last-bixolon",
+    "platforms": [
+      "android"
+    ]
+  },
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ]
+}

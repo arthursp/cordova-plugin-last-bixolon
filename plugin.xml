@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns="http://apache.org/cordova/ns/plugins/1.0"
+	id="com.bxl.service.phonegap"
+	version="1.0.7.0">
+
+    <name>BXL Cordova SDK for UPOS Compliant</name>
+    <description>BXL SDK for UPOS Compliant Plugin</description>
+    <author>BIXOLON</author>
+    <keywords>BIXOLON,BXL</keywords>
+    <license>Apache 2.0 License</license>
+
+    <!--https://cordova.apache.org/docs/en/5.0.0/plugin_ref/spec.html-->
+    <!--The child elements of the <engines> element specify versions of Apache Cordova-based frameworks that this plugin supports.-->
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+    <dependency id="cordova-promise-polyfill"></dependency><!--This is a polyfill of the ES6 Promise for Cordova-->
+
+    <js-module src="www/bxl_service.js" name="bxl_service" >
+        <clobbers target="bxl_service" />
+    </js-module>
+
+    <!-- Android -->
+    <platform name="android" >
+        <resource-file src="src/android/res/jpos.xml" target="res/raw/jpos.xml" />
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="BXLService">
+                <param name="android-package" value="com.bxl.service.phonegap.BXLService" />
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.BLUETOOTH" />
+            <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+        </config-file>
+        <source-file src="src/android/BXLService.java" target-dir="src/com/bxl/service/phonegap" />
+	<source-file src="src/android/DialogManager.java" target-dir="src/com/bxl/service/phonegap" />
+
+        <lib-file arch="device" src="src/android/libs/bixolon_printer.jar" />
+        <lib-file arch="device" src="src/android/libs/bixolon_pdf.jar" />
+        <lib-file arch="device" src="src/android/libs/jpos-controls.jar" />
+        <lib-file arch="device" src="src/android/libs/xerces.jar" />
+    </platform>
+
+</plugin>
